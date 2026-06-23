@@ -8,16 +8,18 @@ export default function useOrder() {
   const addItem = (item: MenuItem) => {
     const itemExist = order.find(orderItem => orderItem.id === item.id)
     if(itemExist) {
+      
       console.log("Ya existe...");
       const updatedOrder = order.map( orderItem => orderItem.id === item.id ? {...orderItem, quantity: orderItem.quantity + 1}  : orderItem)
       setOrder(updatedOrder);
+
     } else {
+      
+        console.log("agregando...");
+        console.log(item);
 
-      console.log("agregando...");
-      console.log(item);
-
-      const newItem : OrderItem = {...item, quantity: 1}
-      setOrder([...order, newItem]);
+        const newItem : OrderItem = {...item, quantity: 1}
+        setOrder([...order, newItem]);
 
     }
 
